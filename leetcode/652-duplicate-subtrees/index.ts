@@ -108,7 +108,6 @@ const generateGraph = function (input: FlatGraph): TreeNode {
     rootNode = currentNode = new TreeNode(val == null ? undefined : val);
 
     let didLeft = false;
-    let didRight = false;
 
     for (let i = 1; i < input.length; i++) {
         if (!currentNode) {
