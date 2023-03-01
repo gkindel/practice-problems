@@ -51,13 +51,11 @@ function findDuplicateSubtrees(root: TreeNode): Array<TreeNode | null> {
         const duplicate = allFlat.find(n => isFlatDuplicate(flatNode, n));
 
         // append if unique
-        if (duplicate) {
-            if (duplicatesFlat.includes(duplicate)) {
-            } else {
-                duplicatesFlat.push(duplicate)
-            }
-        } else {
+        if (!duplicate) {
             allFlat.push(flatNode);
+        }
+        else if (!duplicatesFlat.includes(duplicate)) {
+            duplicatesFlat.push(duplicate)
         }
 
         if (node.left)
@@ -67,6 +65,8 @@ function findDuplicateSubtrees(root: TreeNode): Array<TreeNode | null> {
             workingQueue.push(node.right);
     }
 
+    // note: optimization through not throwing away node,
+    // which is technically more correct as not a clone
     return duplicatesFlat.map(d => generateGraph(d));
 };
 
