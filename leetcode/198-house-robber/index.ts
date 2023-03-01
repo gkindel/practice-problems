@@ -30,7 +30,6 @@ function rob(nums: number[]): number {
         // console.log(`walking i=${offset}`);
 
         if (cache[offset] !== undefined) {
-            // cache[offset];
             // console.log('.. cache hit!', cache[offset]);
             return cache[offset];
         }
@@ -49,11 +48,9 @@ function rob(nums: number[]): number {
         }
 
         // console.log(`.. digging into #${offset} (${val})`);
-
         const choice1 = nodeValue(offset + 2)
         const choice2 = nodeValue(offset + 3)
         const max = Math.max(choice1, choice2)
-        // console.log(".. results", `#${offset} [${choice1}, ${choice2}] => ${max}`);
 
         return cache[offset] = val + max;
     }
