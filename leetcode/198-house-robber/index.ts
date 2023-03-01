@@ -66,8 +66,3 @@ import assert from '../../util/test';
 
 assert(rob([1, 2, 3, 1]), 4);
 assert(rob([2, 7, 9, 3, 1]), 12)
-// console.log(rob([2, 7, 9, 3, 1]));
-console.log(
-    // rob([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
-    // rob([1, 2, 3])
-);
