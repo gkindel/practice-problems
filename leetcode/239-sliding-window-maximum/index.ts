@@ -1,4 +1,4 @@
-import assert from '../../javascript-problems/test/index'
+import assert from '../../util/test';
 
 const input = [1, 3, -1, -3, 5, 3, 6, 7];
 const k = 3;
