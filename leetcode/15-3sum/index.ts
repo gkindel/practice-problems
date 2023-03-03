@@ -2,21 +2,29 @@
 
 function threeSum(nums: number[]): number[][] {
     const sorted = nums.sort((a, b) => a - b);
-    const len = sorted.length;
 
     const matrix: number[][] = []
     const seen: { [k: string]: boolean } = {};
     const results: number[][] = []
 
     let i: number;
+
+    const uniq: number[] = [];
+    for (i = 0; i < sorted.length; i++) {
+        if (sorted[i] !== sorted[i + 3]) {
+            uniq.push(sorted[i]);
+        }
+    }
+
+    const len = uniq.length;
     let max_i = len - 1;
     let max_j = len;
 
     // build out matrix
     for (i = 0; i < max_i; i++) {
         for (let j = i + 1; j < max_j; j++) {
-            let a = sorted[i];
-            let b = sorted[j];
+            let a = uniq[i];
+            let b = uniq[j];
             let c: number = a + b;
             if (matrix[i] === undefined) {
                 matrix[i] = [];
@@ -30,14 +38,14 @@ function threeSum(nums: number[]): number[][] {
     let haystack: number[], needle: number, triplet: number[];
     let hash: string;
     for (let i = 0; i < max_i; i++) {
-        haystack = sorted.slice(i + 1);
+        haystack = uniq.slice(i + 1);
         for (j = i + 1; j < max_j; j++) {
             needle = matrix[i][j];
             k = j + 1;
             haystack.shift();
             n = haystack.indexOf(needle);
             if (n > -1) {
-                triplet = [sorted[i], sorted[j], sorted[n + k]];
+                triplet = [uniq[i], uniq[j], uniq[n + k]];
                 hash = triplet.join(',');
                 if (!seen[hash]) {
                     seen[hash] = true;
